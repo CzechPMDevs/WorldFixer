@@ -1,6 +1,11 @@
 name: WorldFixer
-version: 1.0
-api: 1.12.0
+version: 1.0.1
+api:
+  - 1.0.0
+  - 2.0.0
+  - 3.0.0
+  - 3.0.0-ALPHA4
+  - 3.0.0-ALPHA5
 main: WorldFixer\WorldFixer
 author: CreeperFace
 description: "Now you can fix grass and slabs easily and quickly!"
