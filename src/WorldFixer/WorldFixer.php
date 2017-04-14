@@ -253,6 +253,19 @@ class WorldFixer extends PluginBase implements Listener{
                                 $level->setBlockIdAt($x, $y, $z, Item::FENCE);
                                 $level->setBlockDataAt($x, $y, $z, 5);
                                 break;
+                            case 166:
+                                // barrier -> invisible bedrock
+                                $level->setBlockIdAt($x, $y, $z, 95);
+                                $level->setBlockDataAt($x, $y, $z, 0);
+                                break;
+                            case 144:
+                                // mob heads -> air
+                                $level->setBlockIdAt($x, $y, $z, 0);
+                                $level->setBlockDataAt($x, $y, $z, 0);
+                                break;
+                            case 84:
+                                $level->setBlockIdAt($x, $y, $z, 25);
+                                $level->setBlockDataAt($x, $y, $z, 0);
                         }
                     }
                 }
