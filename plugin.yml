@@ -1,0 +1,30 @@
+name: WorldFixer
+version: 1.0
+api: 1.12.0
+main: WorldFixer\WorldFixer
+author: CreeperFace
+description: "Now you can fix grass and slabs easily and quickly!"
+
+commands:
+    wf:
+        description: "Main command"
+        
+permissions:
+    wf:
+        description: "Permission to do all actions"
+        children:
+            wf.command:
+                description: "Permission to run all commands"
+                children:
+                    wf.command.fixcolor:
+                        description: "allows fix grass color in your world"
+                        default: op
+                    wf.command.fixslabs:
+                        description: "allows fix wooden slabs in your world"
+                        default: op
+                    wf.command.fix:
+                        description: "allows fix grass color and wooden slabs in your world"
+                        default: op
+                    wf.command.wand:
+                        description: "allows select an area"
+                        default: op
