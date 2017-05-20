@@ -204,7 +204,7 @@ class WorldFixer extends PluginBase implements Listener{
 
                 $count++;
 
-                echo "\rMaking ".$count."/".$maxCount." ...";
+                $this->getLogger()->info("\rMaking ".$count."/".$maxCount." ...");
 
                 if($color){
                     $level->setBiomeColor($x, $z, 108, 151, 47);
