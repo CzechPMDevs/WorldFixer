@@ -1,2 +1,2 @@
 # WorldFixer
-PHP version of WorldFixer by @Creeperface
+PHP version of WorldFixer by @Creeperface01
