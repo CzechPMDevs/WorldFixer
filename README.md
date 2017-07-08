@@ -2,4 +2,4 @@
 
 ### PHP version of WorldFixer by @Creeperface01
 
-### - Download: https://poggit.pmmp.io/ci/CzechPMDevs/WorldFixer/~
+### - Download: https://poggit.pmmp.io/ci/CzechPMDevs/WorldFixer/
