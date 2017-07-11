@@ -53,7 +53,7 @@ class WorldFixer extends PluginBase implements Listener{
                         return;
                     }
 
-                    $level = $level1;
+                    $level = $this->getLevel($level1);
 
                     $this->fix($level, $x1, $y1, $z1, $x2, $y2, $z2, true, false);
 
@@ -76,7 +76,7 @@ class WorldFixer extends PluginBase implements Listener{
                         return;
                     }
 
-                    $level = $level1;
+                    $level = $this->getLevel($level1);
 
                     $this->fix($level, $x1, $y1, $z1, $x2, $y2, $z2, false, true);
 
@@ -159,7 +159,7 @@ class WorldFixer extends PluginBase implements Listener{
         return false;
     }
 
-    public function fix($level, $x1, $y1, $z1, $x2, $y2, $z2, $color = true, $slabs = true){
+    public function fix(Level $level, $x1, $y1, $z1, $x2, $y2, $z2, $color = true, $slabs = true){
         if(!$color && !$slabs){
             return false;
         }
