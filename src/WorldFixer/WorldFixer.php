@@ -59,11 +59,11 @@ class WorldFixer extends PluginBase implements Listener{
                     $this->fix($level, $x1, $y1, $z1, $x2, $y2, $z2, true, false);
 
                     $sender->sendMessage(TextFormat::GREEN."Grass color sucessfully fixed!");
-                    break;
+                    return false;
                 case "fix":
                     if(!$sender->hasPermission("wf.command.fix") && !$sender->isOp()){
                         $sender->sendMessage($cmd->getPermissionMessage());
-                        break;
+                        return false;
                     }
                     if(!$this->isPosSet($sender)){
                         $sender->sendMessage(TextFormat::RED."You must select both positions first!");
@@ -82,7 +82,7 @@ class WorldFixer extends PluginBase implements Listener{
                     $this->fix($level, $x1, $y1, $z1, $x2, $y2, $z2, false, true);
 
                     $sender->sendMessage(TextFormat::GREEN."Selected area successfully fixed!");
-                    break;
+                    return false;
                 case "fixslabs":
                     if(!$sender->hasPermission("wf.command.fixslabs") && !$sender->isOp()){
                         $sender->sendMessage($cmd->getPermissionMessage());
@@ -105,7 +105,7 @@ class WorldFixer extends PluginBase implements Listener{
                     $this->fix($level, $x1, $y1, $z1, $x2, $y2, $z2, false, true);
 
                     $sender->sendMessage(TextFormat::GREEN."Slabs sucessfully fixed!");
-                    break;
+                    return false;
                 case "wand":
                     if(!$sender->hasPermission("wf.command.wand") && !$sender->isOp()){
                         $sender->sendMessage($cmd->getPermissionMessage());
@@ -117,7 +117,7 @@ class WorldFixer extends PluginBase implements Listener{
                     $this->selectors[strtolower($sender->getName())]['ins'] = $sender;
                     $this->selectors[strtolower($sender->getName())]['block'] = 1;
                     $sender->sendMessage(TextFormat::GREEN."Now select two blocks");
-                    break;
+                    return false;
                 case "help":
                     $sender->sendMessage(TextFormat::YELLOW."> WorldFixer help <\n".TextFormat::GREEN."/wf wand ".TextFormat::GRAY."select two positions\n".TextFormat::GREEN."/wf fixslabs ".TextFormat::GRAY."Fix all slabs in the world\n".TextFormat::GREEN."/wf fixcolor ".TextFormat::GRAY."change grass color to green\n".TextFormat::GREEN."/wf fix ".TextFormat::GRAY."fix all slabs in the world and set grass color to green");
                     return false;
@@ -165,11 +165,9 @@ class WorldFixer extends PluginBase implements Listener{
             return false;
         }
 
-        $level = $this->getServer()->getLevel(intval($level));
 
-        if(!$level instanceof Level){
-            return false;
-        }
+
+        if(!$level instanceof Level) $level = $this->getServer()->getLevel(intval($level));
 
         $pos1 = new Vector3(min($x1, $x2), min($y1, $y2), min($z1, $z2));
         $pos2 = new Vector3(max($x1, $x2), max($y1, $y2), max($z1, $z2));
@@ -189,7 +187,7 @@ class WorldFixer extends PluginBase implements Listener{
         if($color && !$slabs){
             for($x = min($x1, $x2); $x < max($x1, $x2); $x++){
                 for($z = min($z1, $z2); $z < max($z1, $z2); $z++){
-                    $level->setBiomeColor($x, $z, 108, 151, 47);
+                    #$level->setBiomeColor($x, $z, 108, 151, 47);
                 }
             }
             return true;
@@ -208,7 +206,7 @@ class WorldFixer extends PluginBase implements Listener{
                 $this->getLogger()->info("\rMaking ".$count."/".$maxCount." ...");
 
                 if($color){
-                    $level->setBiomeColor($x, $z, 108, 151, 47);
+                    #$level->setBiomeColor($x, $z, 108, 151, 47);
                 }
 
                 if($slabs) {
