@@ -87,6 +87,9 @@ class BlockChangeTask extends AsyncTask{
                             case 84:
                                 $chunk->setBlock($x,$y,$z,25);
                                 break;
+                            case Item::END_ROD:
+                                $chunk->setBlock($x,$y,$z, Item::TALL_GRASS);
+                                break;
                         }
                     }
                 }
