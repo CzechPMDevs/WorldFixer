@@ -9,10 +9,8 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
-use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\Cache;
 use pocketmine\level\Level;
 
 /**
@@ -66,7 +64,7 @@ class WorldFixer extends PluginBase implements Listener{
                         return false;
                     }
 
-                    $level = Server::getInstance()->getLevel($level1);
+                    $level = $this->getServer()->getLevel($level1);
 
                     $count = $this->fix($level, $x1, $y1, $z1, $x2, $y2, $z2);
 
@@ -133,14 +131,11 @@ class WorldFixer extends PluginBase implements Listener{
      * @return bool
      */
     public function isPosSet(Player $p){
-        if(isset($this->selectors[strtolower($p->getName())]['pos1']) && isset($this->selectors[strtolower($p->getName())]['pos2'])){
-            return true;
-        }
-        return false;
+        return isset($this->selectors[strtolower($p->getName())]['pos1']) && isset($this->selectors[strtolower($p->getName())]['pos2'])
     }
 
     /**
-     * @param Level $level
+     * @param Level $level;
      * @param $x1
      * @param $y1
      * @param $z1
