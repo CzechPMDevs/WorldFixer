@@ -4,6 +4,7 @@ namespace worldfixer\editors;
 
 use pocketmine\block\Block;
 use pocketmine\level\Level;
+use pocketmine\level\Position;
 use pocketmine\math\Vector3;
 
 class Fixer {
@@ -20,7 +21,7 @@ class Fixer {
         166 => [Block::INVISIBLE_BEDROCK, 0],
         144 => [Block::AIR, 0], // mob heads
         208 => [Block::GRASS_PATH, 0],
-        198 => [Block::END_ROD]
+        198 => [Block::END_ROD, 0]
     ];
 
     /**
@@ -41,6 +42,7 @@ class Fixer {
                 for ($z = min($z1, $z2); $z <= max($z1, $z2); $z++) {
                     $id = $level->getBlock(new Vector3($x, $y, $z))->getId();
                     if(isset(self::$blocks[$id])) {
+                        array_push($dataToFill, [new Position($x, $y, $z, $level), Block::get(self::$blocks[$id][0], self::$blocks[$id][1])]);
                         $count++;
 
                     }
