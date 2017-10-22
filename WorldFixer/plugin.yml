@@ -1,7 +1,7 @@
 name: WorldFixer
 version: 1.0.3
 api: [3.0.0-ALPHA7, 3.0.0-ALPHA8, 3.0.0-ALPHA9]
-main: WorldFixer\WorldFixer
+main: worldfixer\WorldFixer
 authors: [CreeperFace, GamakCZ]
 description: Now you can block, slabs easily and quickly!
 
