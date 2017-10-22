@@ -3,6 +3,6 @@ branches:
 - master
 projects:
   WorldFixer:
-    path: ""
+    path: "WorldFixer"
     icon: "/icon.png"
 ...
