@@ -23,10 +23,16 @@ class WorldFixerCommand extends Command implements PluginIdentifiableCommand, Li
     private $selectors;
 
     public function __construct() {
-        parent::__construct("worldfixer", "WorldFixer commands", null, []);
+        parent::__construct("worldfixer", "WorldFixer commands", null, ["wf"]);
         Server::getInstance()->getPluginManager()->registerEvents($this, $this->getPlugin());
     }
 
+    /**
+     * @param CommandSender $sender
+     * @param string $commandLabel
+     * @param array $args
+     * @return void
+     */
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
         if (!$sender instanceof Player) {
@@ -70,12 +76,12 @@ class WorldFixerCommand extends Command implements PluginIdentifiableCommand, Li
                 $this->selectors[strtolower($sender->getName())]['ins'] = $sender;
                 $this->selectors[strtolower($sender->getName())]['block'] = 1;
                 $sender->sendMessage("§aNow select two blocks");
-                return false;
+                return;
             case "help":
                 $sender->sendMessage("§e> WorldFixer help <\n" .
                     "§a/wf wand §7select two positions\n" .
                     "§a/wf fix §7fix blocks and slabs in selected area");
-                return false;
+                return;
             default:
                 $sender->sendMessage("§cUse /wf help for help");
                 return;
@@ -101,14 +107,14 @@ class WorldFixerCommand extends Command implements PluginIdentifiableCommand, Li
                 $e->setCancelled();
                 $this->selectors[strtolower($p->getName())]['pos1'] = "$b->x:$b->y:$b->z:{$b->level->getId()}";
                 $this->selectors[strtolower($p->getName())]['block'] = 2;
-                $p->sendMessage("§Selected the first position at $b->x, $b->y, $b->z");
+                $p->sendMessage("§aSelected the first position at $b->x, $b->y, $b->z");
                 return;
             }
             if($this->selectors[strtolower($p->getName())]['block'] === 2){
                 $e->setCancelled();
                 $this->selectors[strtolower($p->getName())]['pos2'] = "$b->x:$b->y:$b->z:{$b->level->getId()}";
                 $this->selectors[strtolower($p->getName())]['block'] = 0;
-                $p->sendMessage("§Selected the second position at $b->x, $b->y, $b->z");
+                $p->sendMessage("§aSelected the second position at $b->x, $b->y, $b->z");
                 return;
             }
         }
