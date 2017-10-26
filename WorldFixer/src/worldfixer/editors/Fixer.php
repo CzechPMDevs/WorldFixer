@@ -8,7 +8,6 @@ use pocketmine\level\Position;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 use worldfixer\task\FixTask;
-use worldfixer\WorldFixer;
 
 class Fixer {
 
@@ -44,10 +43,8 @@ class Fixer {
             for ($y = min($y1, $y2); $y <= max($y1, $y2); $y++) {
                 for ($z = min($z1, $z2); $z <= max($z1, $z2); $z++) {
                     $id = $level->getBlock(new Vector3($x, $y, $z))->getId();
-                    var_dump(self::$blocks);
                     if(isset(self::$blocks[$id])) {
                         array_push($dataToFill, [new Position($x, $y, $z, $level), Block::get(self::$blocks[$id][0], self::$blocks[$id][1])]);
-                        WorldFixer::getInstance()->getLogger()->debug("§a{$count} block will fixed");
                         $count++;
                     }
                 }

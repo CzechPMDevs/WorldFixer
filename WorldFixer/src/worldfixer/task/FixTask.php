@@ -14,6 +14,9 @@ use pocketmine\Server;
  */
 class FixTask extends Task {
 
+    /** @var int $fillTime */
+    private static $fillTime = 4;
+
     /** @var array $toFix */
     public static $toFix = [];
 
@@ -21,19 +24,23 @@ class FixTask extends Task {
      * @param int $currentTick
      */
     public function onRun(int $currentTick) {
+        $blocks = 0;
         foreach (self::$toFix as $playerName => $data) {
             foreach ($data as $d) {
                 $position = $d[0];
                 $block = $d[1];
                 if($position instanceof Position && $block instanceof Block) {
                     $position->getLevel()->setBlock($position->asVector3(), $block);
+                    $blocks++;
                 }
             }
             if(count($data) == 1) {
-                if($pl = Server::getInstance()->getPlayerExact($playerName) instanceof Player){
-                    $pl->sendMessage("§aSelected area fixed!");
+                $player = Server::getInstance()->getPlayerExact($playerName);
+                if($player instanceof Player){
+                    $player->sendMessage("§aSelected area successfully fixed!");
                 }
             }
+            if($blocks == self::$fillTime) return;
         }
     }
 
