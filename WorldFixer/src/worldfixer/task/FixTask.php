@@ -1,4 +1,4 @@
-<?php
+Exact<?php
 
 namespace worldfixer\task;
 
@@ -30,7 +30,7 @@ class FixTask extends Task {
                 }
             }
             if(count($data) == 1) {
-                Server::getInstance()->getPlayer($playerName)->sendMessage("§aSelected area fixed!");
+                Server::getInstance()->getPlayerExact($playerName)->sendMessage("§aSelected area fixed!");
             }
         }
     }
