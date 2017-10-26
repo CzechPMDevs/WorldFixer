@@ -30,7 +30,9 @@ class FixTask extends Task {
                 }
             }
             if(count($data) == 1) {
-                Server::getInstance()->getPlayerExact($playerName)->sendMessage("§aSelected area fixed!");
+                if($pl = Server::getInstance()->getPlayerExact($playerName) instanceof Player){
+                    $pl->sendMessage("§aSelected area fixed!");
+                }
             }
         }
     }
