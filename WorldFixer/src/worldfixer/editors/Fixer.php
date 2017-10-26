@@ -6,6 +6,8 @@ use pocketmine\block\Block;
 use pocketmine\level\Level;
 use pocketmine\level\Position;
 use pocketmine\math\Vector3;
+use pocketmine\Player;
+use worldfixer\task\FixTask;
 use worldfixer\WorldFixer;
 
 class Fixer {
@@ -35,7 +37,7 @@ class Fixer {
      * @param Level $level
      * @return int
      */
-    public static function fix($x1, $y1, $z1, $x2, $y2, $z2, Level $level):int {
+    public static function fix($x1, $y1, $z1, $x2, $y2, $z2, Level $level, Player $player):int {
         $count = 0;
         $dataToFill = [];
         for($x = min($x1, $x2); $x <= max($x1, $x2); $x++) {
@@ -51,6 +53,7 @@ class Fixer {
                 }
             }
         }
+        FixTask::addToFix($dataToFill, $player);
         return $count;
     }
 }

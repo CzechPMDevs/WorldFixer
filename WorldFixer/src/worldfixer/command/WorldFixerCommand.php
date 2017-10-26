@@ -56,13 +56,12 @@ class WorldFixerCommand extends Command implements PluginIdentifiableCommand, Li
                 }
                 list($x1, $y1, $z1, $level1) = explode(':', $this->selectors[strtolower($sender->getName())]['pos1']);
                 list($x2, $y2, $z2, $level2) = explode(':', $this->selectors[strtolower($sender->getName())]['pos2']);
-
                 if ($level1 !== $level2) {
                     $sender->sendMessage("§cBoth positions must be in the same level!");
                     return;
                 }
                 $level = Server::getInstance()->getLevel($level1);
-                $count = Fixer::fix($x1, $y1, $z1, $x2, $y2, $z2, $level);
+                $count = Fixer::fix($x1, $y1, $z1, $x2, $y2, $z2, $level, $sender);
                 $sender->sendMessage("§aSelected area successfully fixed ({$count} block changed)!");
                 return;
             case "wand":
