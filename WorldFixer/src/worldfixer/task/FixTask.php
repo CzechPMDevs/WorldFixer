@@ -1,4 +1,4 @@
-Exact<?php
+<?php
 
 namespace worldfixer\task;
 
