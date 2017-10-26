@@ -31,41 +31,41 @@ class WorldFixerCommand extends Command implements PluginIdentifiableCommand, Li
     {
         if (!$sender instanceof Player) {
             $sender->sendMessage("§cThis command can be used only ingame!");
-            return false;
+            return;
         }
 
         if (empty($args[0])) {
             $sender->sendMessage("§cUse /wf help for help");
-            return false;
+            return;
         }
         switch (strtolower($args[0])) {
             case "fix":
                 if (!$sender->hasPermission("wf.command.fix") && !$sender->isOp()) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
-                    return false;
+                    return;
                 }
                 if (!$this->isPosSet($sender)) {
                     $sender->sendMessage("§cYou must select both positions first!");
-                    return false;
+                    return;
                 }
                 list($x1, $y1, $z1, $level1) = explode(':', $this->selectors[strtolower($sender->getName())]['pos1']);
                 list($x2, $y2, $z2, $level2) = explode(':', $this->selectors[strtolower($sender->getName())]['pos2']);
 
                 if ($level1 !== $level2) {
                     $sender->sendMessage("§cBoth positions must be in the same level!");
-                    return false;
+                    return;
                 }
                 $level = Server::getInstance()->getLevel($level1);
                 $count = Fixer::fix($x1, $y1, $z1, $x2, $y2, $z2, $level);
                 $sender->sendMessage("§aSelected area successfully fixed ({$count} block changed)!");
-                return false;
+                return;
             case "wand":
                 if (!$sender->hasPermission("wf.command.wand") && !$sender->isOp()) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
-                    return false;
+                    return;
                 }
                 if ($this->isSelector($sender)) {
-                    return false;
+                    return;
                 }
                 $this->selectors[strtolower($sender->getName())]['ins'] = $sender;
                 $this->selectors[strtolower($sender->getName())]['block'] = 1;
@@ -78,7 +78,7 @@ class WorldFixerCommand extends Command implements PluginIdentifiableCommand, Li
                 return false;
             default:
                 $sender->sendMessage("§cUse /wf help for help");
-                return false;
+                return;
         }
     }
 
