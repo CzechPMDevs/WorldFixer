@@ -35,7 +35,7 @@ class FixTask extends Task {
                 }
                 unset(self::$toFix[$playerName]);
             }
-            if(count(self::$toFix[$playerName])) {
+            if(count(self::$toFix[$playerName]) <= 1) {
                 $player = Server::getInstance()->getPlayerExact($playerName);
                 if($player instanceof Player){
                     $player->sendMessage("§aSelected area successfully fixed!");
