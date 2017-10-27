@@ -33,6 +33,7 @@ class FixTask extends Task {
                     $position->getLevel()->setBlock($position->asVector3(), $block);
                     $blocks++;
                 }
+                unset(self::$toFix[$playerName]);
             }
             if(count($data) == 1) {
                 $player = Server::getInstance()->getPlayerExact($playerName);

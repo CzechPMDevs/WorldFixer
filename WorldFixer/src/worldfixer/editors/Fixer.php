@@ -23,7 +23,14 @@ class Fixer {
         166 => [Block::INVISIBLE_BEDROCK, 0],
         144 => [Block::AIR, 0], // mob heads
         208 => [Block::GRASS_PATH, 0],
-        198 => [Block::END_ROD, 0]
+        198 => [Block::END_ROD, 0],
+        3 => [Block::PODZOL, 0],
+        126 => [Block::WOODEN_SLAB, 0],
+        95 => [Block::STAINED_GLASS, 0],
+        160 => [Block::STAINED_GLASS_PANE, 0],
+        199 => [Block::CHORUS_PLANT, 0],
+        202 => [Block::PURPUR_BLOCK, 0],
+        204 => [Block::PURPUR_BLOCK, 0]
     ];
 
     /**
