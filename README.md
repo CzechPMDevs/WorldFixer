@@ -7,7 +7,7 @@
 ## How to use:
 
 - Use command /wf wand and select two blocks
-- Write command /wf fix
+- Write command /wf fix to fix selected area
 
 ## Commands:
 
@@ -15,8 +15,10 @@
 
 - /wf fix:
   - permission: wf.command.fix (OP)
+  - Fix selected area
 - /wf wand
   - permission: wf.command.wand (OP)
+  - select area to fix
   
   ## Permissions:
   
