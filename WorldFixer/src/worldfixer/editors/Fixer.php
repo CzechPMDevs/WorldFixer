@@ -30,6 +30,7 @@ class Fixer {
         160 => [Block::STAINED_GLASS_PANE, 0],
         199 => [Block::CHORUS_PLANT, 0],
         202 => [Block::PURPUR_BLOCK, 0],
+        251 => [Block::CONCRETE, 0],
         204 => [Block::PURPUR_BLOCK, 0]
     ];
 
