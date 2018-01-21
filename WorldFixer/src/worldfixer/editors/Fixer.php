@@ -24,7 +24,7 @@ class Fixer {
         144 => [Block::AIR, 0], // mob heads
         208 => [Block::GRASS_PATH, 0],
         198 => [Block::END_ROD, 0],
-        3 => [Block::PODZOL, 0],
+        #3 => [Block::PODZOL, 0],
         126 => [Block::WOODEN_SLAB, 0],
         95 => [Block::STAINED_GLASS, 0],
         160 => [Block::STAINED_GLASS_PANE, 0],
