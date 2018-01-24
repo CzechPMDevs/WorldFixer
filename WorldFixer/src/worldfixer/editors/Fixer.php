@@ -26,7 +26,7 @@ class Fixer {
         198 => [Block::END_ROD, 0],
         #3 => [Block::PODZOL, 0],
         126 => [Block::WOODEN_SLAB, 0],
-        95 => [Block::STAINED_GLASS, "%meta"],
+        95 => [Block::STAINED_GLASS, ""],
         #160 => [Block::STAINED_GLASS_PANE, 0],
         199 => [Block::CHORUS_PLANT, 0],
         202 => [Block::PURPUR_BLOCK, 0],
@@ -52,7 +52,9 @@ class Fixer {
                 for ($z = min($z1, $z2); $z <= max($z1, $z2); $z++) {
                     $id = $level->getBlock(new Vector3($x, $y, $z))->getId();
                     if(isset(self::$blocks[$id])) {
-                        array_push($dataToFill, [new Position($x, $y, $z, $level), Block::get(self::$blocks[$id][0], self::$blocks[$id][1])]);
+                        $meta = self::$blocks[$id][1];
+                        if(is_string($meta)) $meta = $level->getBlock(new Vector3($x, $y, $z))->getDamage();
+                        array_push($dataToFill, [new Position($x, $y, $z, $level), Block::get(self::$blocks[$id][0], $meta)]);
                         $count++;
                     }
                 }
